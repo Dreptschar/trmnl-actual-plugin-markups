@@ -1,0 +1,63 @@
+---
+strategy: polling
+no_screen_padding: 'no'
+dark_mode: 'no'
+static_data: "[\r\n  {\r\n    \"name\": \"\U0001F6D2 Lebensmittel\",\r\n    \"budgeted\": 332.76,\r\n    \"spent\": -96.99,\r\n    \"balance\": 235.77\r\n  },\r\n  {\r\n    \"name\": \"\U0001F37D️ Restaurants\",\r\n    \"budgeted\": 120,\r\n    \"spent\": 0,\r\n    \"balance\": 120\r\n  },\r\n  {\r\n    \"name\": \"\U0001F3A2 Aktivitäten\",\r\n    \"budgeted\": 60,\r\n    \"spent\": 0,\r\n    \"balance\": 60\r\n  },\r\n  {\r\n    \"name\": \"\U0001F9F4 Haushalt\",\r\n    \"budgeted\": 12.98,\r\n    \"spent\": -9.98,\r\n    \"balance\": 3\r\n  },\r\n  {\r\n    \"name\": \"\U0001F487‍♂️ Friseur\",\r\n    \"budgeted\": 0,\r\n    \"spent\": 0,\r\n    \"balance\": 30\r\n  },\r\n  {\r\n    \"name\": \"\U0001F94B Kleider\",\r\n    \"budgeted\": 50,\r\n    \"spent\": 0,\r\n    \"balance\": 50\r\n  },\r\n  {\r\n    \"name\": \"\U0001F4A9 Budget\",\r\n    \"budgeted\": 69.34,\r\n    \"spent\": -69.34,\r\n    \"balance\": 0\r\n  },\r\n  {\r\n    \"name\": \"\U0001F698 Mobilität\",\r\n    \"budgeted\": 150,\r\n    \"spent\": 0,\r\n    \"balance\": 150\r\n  },\r\n  {\r\n    \"name\": \"❗️Stuff I forgot to budget for\",\r\n    \"budgeted\": 0,\r\n    \"spent\": 0,\r\n    \"balance\": 0\r\n  }\r\n]"
+polling_verb: post
+polling_url: https://trmnl-actual-plugin-server-production.up.railway.app/api/markup
+polling_headers: content-type=application/json
+polling_body: '{"serverURL": "{{serverurl}}", "serverPassword":"{{serverpassword}}","budgetSyncId":"{{budgetsyncid}}","budgetEncryptionPassword":"{{budgetEncryptionPassword}}","groupName":"{{groupname}}","excluded":"{{excluded}}"}'
+id: 111710
+custom_fields:
+- keyname: serverurl
+  field_type: string
+  name: Actual Server URL
+  description: The URL of the Actual Server.
+- keyname: serverpassword
+  field_type: password
+  name: Actual Server Password
+  description: The password for the Actual Server.
+- keyname: budgetsyncid
+  field_type: string
+  name: Budget Sync ID
+  description: The Sync ID of the budget you want to display.
+- keyname: budgetEncryptionPassword
+  field_type: password
+  name: Budget Encryption Password
+  optional: true
+  description: The encryption password of the budget you want to display (if applicable).
+- keyname: groupname
+  field_type: string
+  name: Group Name
+  description: The name of the group whose data you want to display.
+- keyname: currency
+  field_type: string
+  name: Currency
+  description: The currency of your budget. If not set, your locale will be used by default.
+  optional: true
+- keyname: excluded
+  field_type: string
+  name: Excluded Categories
+  description: Categories to exclude from display.
+  optional: true
+  help_text: Comma-separated list, e.g. `category1,category2`
+- keyname: showBalance
+  field_type: select
+  options:
+  - true
+  - false
+  name: Show balance
+  description: Should show balance.
+  default: true
+- keyname: doesnt_matter
+  name: Markups
+  field_type: author_bio
+  description: Repo with the Liquid files.
+  github_url: https://github.com/Dreptschar/trmnl-actual-plugin-markups
+- keyname: doesnt_matter
+  name: Polling Server
+  field_type: author_bio
+  description: Repo with code of the polling server.
+  github_url: https://github.com/Dreptschar/trmnl-actual-plugin-server
+name: Actual Budget
+refresh_interval: 1440
