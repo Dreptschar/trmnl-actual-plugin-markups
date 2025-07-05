@@ -1,0 +1,10 @@
+<div class="layout w--96">
+  <div class="column"
+    data-list-limit="true"
+    data-list-max-height="340"
+    data-list-hidden-count="true"
+    data-list-max-columns="3">
+    <span class="title">{{trmnl.plugin_settings.custom_fields_values.groupname}}</span>
+    {% render "clist", data: data, maxRows: 4, currency: trmnl.plugin_settings.custom_fields_values.currency, locale: trmnl.user.locale, showbalance: trmnl.plugin_settings.custom_fields_values.showBalance %}
+  </div>
+</div>

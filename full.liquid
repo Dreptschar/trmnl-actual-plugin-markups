@@ -1,0 +1,17 @@
+<div class="layout w--96">
+  <div class="column"
+    data-list-limit="true"
+    data-list-max-height="340"
+    data-list-hidden-count="true"
+    data-list-max-columns="3">
+    <span class="title">{{trmnl.plugin_settings.custom_fields_values.groupname}}</span>
+    {% render "clist", data: data, maxRows: 8, currency: trmnl.plugin_settings.custom_fields_values.currency, locale: trmnl.user.locale, showbalance: trmnl.plugin_settings.custom_fields_values.showBalance %}
+  </div>
+</div>
+<div class="title_bar">
+  <img class="image" src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/actual-budget.svg">
+  <span class="title">{{ trmnl.plugin_settings.instance_name }}</span>
+  <span class="instance">
+    {{trmnl.plugin_settings.custom_fields_values.serverurl}}
+  </span>
+</div>

@@ -1,0 +1,41 @@
+{% template clist %}
+<style>
+  .progress-container {
+    width: 100%;
+    border-radius: 25px;
+    overflow: hidden;
+    height: 10px;
+  }
+  .progress-bar {
+    height: 100%;
+    text-align: center;
+    line-height: 30px;
+    transition: width 0.3s ease;
+  }
+  .category-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+</style>
+{% for category in data limit:maxRows %}
+<div class="content">
+  <div class="category-container w--full"> 
+    <p class="title title--small" data-pixel-perfect="true">{{category.name}}</p>
+    {% if showbalance == 'true' %}
+    <p class="text--right">
+      {% if currency != '' %}
+      {{category.balance | number_to_currency: currency}}
+      {% else %}
+      {{category.balance | number_to_currency: locale}}
+      {% endif %}
+    </p>
+    {%endif%}
+  </div>
+  {% assign progress = category.balance | divided_by: category.budgeted | times: 100 %}
+  <div class="progress-container mt--1 bg--gray-6">
+    <div class="progress-bar bg--gray-1" style="width: {{progress}}%;"></div>
+  </div>
+</div>
+{% endfor %} 
+{% endtemplate %}
